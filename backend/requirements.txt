@@ -1,0 +1,42 @@
+# Backend Dependencies for Agentic AI Research System
+# FastAPI and Server
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+
+# Environment Variables
+python-dotenv==1.0.0
+
+# Database (MongoDB)
+motor==3.3.2
+pymongo==4.6.0
+
+# Authentication
+passlib[bcrypt]==1.7.4
+bcrypt==4.0.1
+PyJWT==2.8.0
+
+# LangChain and AI
+langchain==0.1.0
+langchain-google-genai==0.0.6
+langchain-pinecone==0.0.1
+langchain-text-splitters==0.0.1
+langgraph==0.0.20
+
+# Vector Database
+pinecone-client==3.0.0
+
+# PDF Processing
+docling==1.0.0
+
+# Web Research Tools
+ddgs==0.6.0
+crawl4ai==0.3.0
+
+# Data Science and Visualization
+pandas==2.1.3
+numpy==1.26.2
+matplotlib==3.8.2
+
+# HTTP Requests (for testing)
+requests==2.31.0
+

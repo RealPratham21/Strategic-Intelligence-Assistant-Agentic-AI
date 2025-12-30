@@ -1,0 +1,10 @@
+# Frontend Dependencies for Strategic Intelligence Assistant
+# Streamlit Dashboard
+streamlit==1.28.0
+
+# HTTP Requests
+requests==2.31.0
+
+# Image Processing
+Pillow==10.1.0
+
