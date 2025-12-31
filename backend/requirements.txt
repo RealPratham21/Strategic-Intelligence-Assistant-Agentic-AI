@@ -27,6 +27,7 @@ pinecone-client
 
 # PDF Processing
 docling
+python-multipart
 
 # Web Research Tools
 ddgs
