@@ -5,9 +5,9 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
-from auth_service import AuthService
-from graph_engine import ResearchGraph
-from rag_engine import RAGEngine
+# from auth_service import AuthService
+# from graph_engine import ResearchGraph
+# from rag_engine import RAGEngine
 import uuid
 import tempfile
 
@@ -81,6 +81,8 @@ class ChatRequest(BaseModel):
 
 @app.post("/signup")
 async def signup(request: SignupRequest):
+    from auth_service import AuthService
+    
     """Create a new user account."""
     try:
         # Validate MongoDB connection
@@ -104,6 +106,8 @@ async def signup(request: SignupRequest):
 
 @app.post("/login")
 async def login(request: LoginRequest):
+    from auth_service import AuthService
+
     """Login and get access token."""
     try:
         # Validate MongoDB connection
@@ -132,6 +136,10 @@ async def login(request: LoginRequest):
 
 @app.post("/upload-pdf")
 async def upload_pdf(file: UploadFile = File(...), token: str = Header(...)):
+    from rag_engine import RAGEngine
+
+    from auth_service import AuthService
+
     """Upload a PDF file for RAG processing."""
     try:
         # Verify user
@@ -174,6 +182,10 @@ async def upload_pdf(file: UploadFile = File(...), token: str = Header(...)):
 
 @app.post("/chat")
 async def chat_endpoint(request: ChatRequest, token: str = Header(...)):
+    from graph_engine import ResearchGraph
+    
+    from auth_service import AuthService
+
     """Main chat endpoint for research queries."""
     try:
         # Validate inputs
