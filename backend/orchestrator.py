@@ -4,7 +4,7 @@ from langchain_core.tools import tool
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import HumanMessage, SystemMessage, ToolMessage
 from research_tools import ResearchToolkit
-from sandbox import LogicSandbox
+
 from pdf_tool import read_pdf_document
 from dotenv import load_dotenv
 from langchain_core.rate_limiters import InMemoryRateLimiter
@@ -31,6 +31,7 @@ async def scrape_site(url: str):
 
 @tool
 def execute_python(code: str, output_filename: str | None = "output_chart.png"):
+    from sandbox import LogicSandbox
     """
     Run Python for calculations, data analysis, or visual plotting.
     - `code`: The Python script to execute.
