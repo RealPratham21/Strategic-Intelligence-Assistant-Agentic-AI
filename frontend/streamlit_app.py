@@ -6,7 +6,7 @@ import os
 from io import BytesIO
 from PIL import Image
 
-BASE_URL = "http://localhost:8000"
+BASE_URL = "https://strategic-intelligence-assistant-agentic.onrender.com"
 
 # Page configuration
 st.set_page_config(

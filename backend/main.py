@@ -262,4 +262,9 @@ async def root():
 
 @app.get("/health")
 async def health():
-    return {"status": "healthy"}
+    """Health check endpoint for deployment monitoring"""
+    try:
+        # Basic health check - don't connect to databases here to avoid blocking
+        return {"status": "healthy", "service": "Strategic Intelligence Assistant API"}
+    except Exception as e:
+        return {"status": "unhealthy", "error": str(e)}
