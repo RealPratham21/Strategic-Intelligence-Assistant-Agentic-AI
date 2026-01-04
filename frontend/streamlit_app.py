@@ -121,7 +121,7 @@ def send_query(token, query, thread_id):
             f"{BASE_URL}/chat",
             json={"query": query, "thread_id": thread_id},
             headers={"token": token},
-            timeout=300  # 5 minutes
+            timeout=600  # 10 minutes
         )
         if response.status_code == 200:
             return response.json(), None
