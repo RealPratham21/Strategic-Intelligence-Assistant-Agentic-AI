@@ -6,7 +6,8 @@ import os
 from io import BytesIO
 from PIL import Image
 
-BASE_URL = "https://strategic-intelligence-assistant-agentic.onrender.com"
+# BASE_URL = "https://strategic-intelligence-assistant-agentic.onrender.com"
+BASE_URL = "http://localhost:8000"
 
 # Page configuration
 st.set_page_config(
@@ -55,7 +56,7 @@ st.markdown("""
 def check_server():
     """Check if server is running"""
     try:
-        response = requests.get(f"{BASE_URL}/health", timeout=5)
+        response = requests.get(f"{BASE_URL}/health", timeout=10)
         return response.status_code == 200
     except:
         return False
@@ -66,7 +67,7 @@ def signup(username, password):
         response = requests.post(
             f"{BASE_URL}/signup",
             json={"username": username, "password": password},
-            timeout=10
+            timeout=120
         )
         if response.status_code == 200:
             data = response.json()
@@ -83,7 +84,7 @@ def login(username, password):
         response = requests.post(
             f"{BASE_URL}/login",
             json={"username": username, "password": password},
-            timeout=10
+            timeout=120
         )
         if response.status_code == 200:
             data = response.json()

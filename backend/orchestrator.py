@@ -31,7 +31,6 @@ async def scrape_site(url: str):
 
 @tool
 def execute_python(code: str, output_filename: str | None = "output_chart.png"):
-    from sandbox import LogicSandbox
     """
     Run Python for calculations, data analysis, or visual plotting.
     - `code`: The Python script to execute.
@@ -39,8 +38,20 @@ def execute_python(code: str, output_filename: str | None = "output_chart.png"):
     The environment includes 'plt' (matplotlib), 'pd' (pandas), and 'np' (numpy).
     ALWAYS call plt.savefig(output_filename) if you generate a chart.
     """
+    from sandbox import LogicSandbox
     sandbox = LogicSandbox()
     return sandbox.run_code(code, output_filename=output_filename)
+
+@tool
+def query_user_pdfs(query: str):
+    """
+    Query the user's uploaded PDF documents for relevant information.
+    Use this tool to search through documents that the user has previously uploaded.
+    - `query`: The search query to find relevant information in the user's PDFs.
+    """
+    # This is a placeholder - actual implementation is in graph_engine.py call_tool method
+    # The tool is defined here so it can be bound to the LLM, but routing handles the actual execution
+    return "This tool should be handled by the graph engine's routing logic."
 
 # --- THE BRAIN ---
 
@@ -72,7 +83,7 @@ class StrategicBrain:
         )
         
         # Binding all dynamic tools
-        self.tools = [web_search, scrape_site, execute_python, read_pdf_document]
+        self.tools = [web_search, scrape_site, execute_python, read_pdf_document, query_user_pdfs]
         self.model_with_tools = self.llm.bind_tools(self.tools)
 
     def get_response(self, messages):
